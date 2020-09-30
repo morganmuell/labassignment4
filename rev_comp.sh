@@ -22,7 +22,7 @@ $reverse
 "
 
 #complement sequence
-rc=`echo $reverse | tr 'atcg' 'tagc'`
+rc=`echo $reverse | tr [:lower:] [:upper:] 'atcg' [:lower:] [:upper] 'tagc'`
 
 echo "$rc
 "
