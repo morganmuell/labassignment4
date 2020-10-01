@@ -1,7 +1,7 @@
 #! /bin/sh
 
 #initialize variable
-reverse=""
+rev_com=""
 
 #read in data
 name=`grep ">" $1`
@@ -14,18 +14,18 @@ len=${#sequence}
 
 echo "Length: $len"
 
-#loop through sequence in reverse
-reverse=`grep -v ">" $1 | rev`
+#loop through sequence in reverse complement
+#need  replace somewhere to make it case insensitive
+rev_com=`grep -v ">" $1 | rev | tr 'ATGC' 'TACG'`
 
-echo "$sequence
-$reverse
+#Check on the screen to see how the sequence is converted
+echo "Input sequence is: 
+$sequence
+
+The reverse complement sequence is: 
+$rev_com
 "
 
-#complement sequence
-rc=`echo $reverse | tr 'atcg' 'tagc'`
-
-echo "$rc
-"
 
 echo $name >$1.rc.txt
 echo $rc >>$1.rc.txt
