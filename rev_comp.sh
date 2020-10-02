@@ -1,9 +1,19 @@
 #! /bin/sh
 
+#if condition is used to caculate how many arguments given.
 
+if [ $# != 1 ] 
+then 
+echo "The input file  number is $#" 
+echo "Please input only one seqence file following with your script."
+#exit here to stop the script with more/ less than 1 input file
+exit
+
+else
 #read in data, sequence is the variable used to store sequence file only, name is used to store sequence name
 name=`grep ">" $1`
 sequence=`grep -v ">" $1`
+
 
 echo "Name: $name"
 
@@ -21,8 +31,7 @@ rev_com=`grep -v ">" $1 | rev | tr 'ATGC' 'TACG'`
 echo "Input sequence is: 
 $sequence
 =======
-echo "$sequence
-$reverse
+echo "$rev_com
 "
 
 #complement sequence
@@ -35,4 +44,5 @@ $rev_com
 
 
 echo $name >$1.rc.txt
-echo $rc >>$1.rc.txt
+echo $rev_com >>$1.rc.txt
+fi
