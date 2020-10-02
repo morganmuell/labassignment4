@@ -1,9 +1,7 @@
 #! /bin/sh
 
-#initialize variable
-rev_com=""
 
-#read in data
+#read in data, sequence is the variable used to store sequence file only, name is used to store sequence name
 name=`grep ">" $1`
 sequence=`grep -v ">" $1`
 
@@ -14,11 +12,11 @@ len=${#sequence}
 
 echo "Length: $len"
 
-#loop through sequence in reverse complement
+#loop through sequence in reverse complement, rev_com is used to store the reverse complementary sequence
 #need  replace somewhere to make it case insensitive
 rev_com=`grep -v ">" $1 | rev | tr 'ATGC' 'TACG'`
 
-<<<<<<< HEAD
+#<<<<<<< HEAD
 #Check on the screen to see how the sequence is converted
 echo "Input sequence is: 
 $sequence
