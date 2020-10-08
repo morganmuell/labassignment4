@@ -12,6 +12,7 @@ echo "Name: $name"
 #calculate length of sequence
 len=${#sequence}
 
+#reiterate the length to the user
 echo "Length: $len"
 
 #loop through sequence in reverse
